@@ -1,0 +1,16 @@
+{
+  "name": "straw-android-js",
+  "version": "0.0.2",
+  "description": "js API wrapper for straw-android",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/kt3k/straw-android.js"
+  },
+  "author": "Yosiya Hinosawa ( @kt3k )",
+  "license": "MIT License",
+  "readmeFilename": "README.md"
+}
