@@ -4,7 +4,7 @@
   "description": "js API wrapper for straw-android",
   "main": "index.js",
   "scripts": {
-    "test": "grunt"
+    "test": "node_modules/.bin/grunt"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-jasmine": "~0.5.1"
+    "grunt-contrib-jasmine": "~0.5.1",
+    "grunt-cli": "~0.1.9"
   }
 }
