@@ -1,7 +1,16 @@
 
+exec = require('child_process').exec
+
 module.exports = (grunt) ->
 
+
   grunt.initConfig
+
+    shell:
+      instrument:
+        command: './node_modules/.bin/jscoverage src src-cov'
+      'rm-instrumented':
+        command: 'rm -rf src-cov'
 
     jshint:
       all: 'src/*.js'
@@ -14,7 +23,17 @@ module.exports = (grunt) ->
         options:
           specs: 'spec/*.js'
 
+      coverage:
+        src: ['src-cov/straw-android.js', 'src-cov/straw-android-plugin']
+        options:
+          specs: 'spec/*.js'
+          helpers: 'spec/helper/coverage-reporter.js'
+
+
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-contrib-jasmine'
+  grunt.loadNpmTasks 'grunt-shell'
 
-  grunt.registerTask 'default', ['jshint', 'jasmine']
+
+  grunt.registerTask 'default', ['jshint', 'jasmine:all']
+  grunt.registerTask 'cov', ['jshint', 'shell:instrument', 'jasmine:coverage', 'shell:rm-instrumented']

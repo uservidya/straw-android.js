@@ -2,10 +2,10 @@
 describe('straw', function () {
 
     it('exists', function () {
-        expect(window.straw).not.toBe(null);
+        expect(window.straw).not.toEqual(null);
     });
 
     it('is a object', function () {
-        expect(typeof straw === 'object').toBe(true);
+        expect(typeof window.straw === 'object').toBe(true);
     });
 });
