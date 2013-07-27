@@ -65,6 +65,7 @@ var Coverage = (function () {
 
         Object.keys(data).forEach(function (file) {
             var cov = data[file];
+            cov.shift();
 
             files.push({
                 name: file,
