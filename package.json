@@ -4,7 +4,7 @@
   "description": "js API wrapper for straw-android",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/grunt"
+    "test": "make"
   },
   "repository": {
     "type": "git",
