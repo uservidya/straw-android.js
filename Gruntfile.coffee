@@ -35,23 +35,5 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-shell'
 
 
-  grunt.registerTask 'coveralls', 'read coverage data from stdin and report it to coveralls.io', ->
-
-    done = this.async()
-
-    readline = require 'readline'
-
-    rl = readline.createInterface
-      input: process.stdin
-      output: process.stdout
-      terminal: false
-
-    rl.on 'line', (line) ->
-      grunt.log.write(line)
-
-    rl.on 'close', ->
-      done(true)
-
-
   grunt.registerTask 'default', ['jshint', 'jasmine:all']
   grunt.registerTask 'cov', ['jshint', 'shell:instrument', 'jasmine:coverage', 'shell:rm-instrumented']
