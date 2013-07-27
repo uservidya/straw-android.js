@@ -3,7 +3,7 @@
 GRUNT = ./node_modules/.bin/grunt
 
 default:
-ifndef $(TRAVIS_JOB_ID)
+ifndef TRAVIS_JOB_ID
 	@$(MAKE) test
 else
 	@$(MAKE) coveralls
