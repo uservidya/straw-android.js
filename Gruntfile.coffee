@@ -19,13 +19,13 @@ module.exports = (grunt) ->
 
     jasmine:
       all:
-        src: ['src/straw-android.js', 'src/straw-android-plugin']
+        src: ['src/straw-android.js', 'src/straw-android-plugin.js']
         options:
           specs: 'spec/*.js'
           helpers: 'spec/helper/*.js'
 
       coverage:
-        src: ['src-cov/straw-android.js', 'src-cov/straw-android-plugin']
+        src: ['src-cov/straw-android.js', 'src-cov/straw-android-plugin.js']
         options:
           specs: 'spec/*.js'
           helpers: 'spec/helper/*.js'
