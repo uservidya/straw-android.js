@@ -54,4 +54,97 @@ describe('straw', function () {
             straw.storeCallback.restore();
         });
     });
+
+    describe('nativeCallback', function () {
+
+        it('fire success callback when succeeded', function () {
+            var success = sinon.spy();
+            var fail = sinon.spy();
+
+            sinon.spy(straw, 'storeCallback');
+
+            straw.exec('foo', 'bar', {a: 1}, success, fail);
+
+            var callbackId = straw.storeCallback.getCall(0).args[0].id;
+
+            var callbackArgs = {"abc":123};
+
+            straw.nativeCallback(callbackId, true, callbackArgs, false);
+
+            expect(success.calledOnce).toBe(true);
+            expect(success.getCall(0).args[0]).toBe(callbackArgs);
+
+            expect(fail.called).toBe(false);
+
+            straw.storeCallback.restore();
+        });
+
+        it('fire fail callback when failed', function () {
+            var success = sinon.spy();
+            var fail = sinon.spy();
+
+            sinon.spy(straw, 'storeCallback');
+
+            straw.exec('foo', 'bar', {a: 1}, success, fail);
+
+            var callbackId = straw.storeCallback.getCall(0).args[0].id;
+
+            var callbackArgs = {"abc":123};
+
+            straw.nativeCallback(callbackId, false, callbackArgs, false);
+
+            expect(success.called).toBe(false);
+
+            expect(fail.calledOnce).toBe(true);
+            expect(fail.getCall(0).args[0]).toBe(callbackArgs);
+
+            straw.storeCallback.restore();
+        });
+
+        it('cannot fire callbacks again if keepAlive == false', function () {
+            var success = sinon.spy();
+            var fail = sinon.spy();
+
+            sinon.spy(straw, 'storeCallback');
+
+            straw.exec('foo', 'bar', {a: 1}, success, fail);
+
+            var callbackId = straw.storeCallback.getCall(0).args[0].id;
+
+            straw.nativeCallback(callbackId, true, {}, false);
+
+            expect(success.calledOnce).toBe(true);
+
+            straw.nativeCallback(callbackId, true, {}, false);
+
+            expect(success.calledOnce).toBe(true);
+
+            straw.storeCallback.restore();
+        });
+
+        it('can fire callbacks again if keepAlive == true', function () {
+            var success = sinon.spy();
+            var fail = sinon.spy();
+
+            sinon.spy(straw, 'storeCallback');
+
+            straw.exec('foo', 'bar', {a: 1}, success, fail);
+
+            var callbackId = straw.storeCallback.getCall(0).args[0].id;
+
+            straw.nativeCallback(callbackId, true, {}, true);
+
+            expect(success.calledOnce).toBe(true);
+
+            straw.nativeCallback(callbackId, true, {}, false);
+
+            expect(success.calledTwice).toBe(true);
+
+            straw.storeCallback.restore();
+        });
+
+        it('does nothing if callbackId is irrelevant', function () {
+            straw.nativeCallback('irrelevant-id', true, {}, true);
+        });
+    });
 });
