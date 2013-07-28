@@ -13,7 +13,7 @@ module.exports = (grunt) ->
         command: 'rm -rf src-cov'
 
     jshint:
-      all: 'src/*.js'
+      all: ['src/*.js', 'spec/helper/coverage-reporter.js', 'spec/*.js']
       options:
         jshintrc: '.jshintrc'
 

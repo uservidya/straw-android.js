@@ -1,4 +1,10 @@
 
+var describe = window.describe;
+var it = window.it;
+var expect = window.expect;
+var sinon = window.sinon;
+var straw = window.straw;
+
 describe('straw', function () {
     'use strict';
 
@@ -17,7 +23,7 @@ describe('straw', function () {
         expect(typeof straw.nativeCallback === 'function').toBe(true);
     });
 
-    describe('exec', function() {
+    describe('exec', function () {
 
         it('calls exec of JS_TO_NATIVE_CALLBACK\'s exec and stores a callback with id', function () {
             var a = function () {};
@@ -25,7 +31,7 @@ describe('straw', function () {
 
             sinon.spy(straw, 'storeCallback');
 
-            var nativeApi = window['JS_TO_NATIVE_INTERFACE'] = {exec: function () {}};
+            var nativeApi = window.JS_TO_NATIVE_INTERFACE = {exec: function () {}};
             sinon.spy(nativeApi, 'exec');
 
             straw.exec('fooPlugin', 'barAction', {value: 1}, a, b);
@@ -75,7 +81,7 @@ describe('straw', function () {
 
             var callbackId = straw.storeCallback.getCall(0).args[0].id;
 
-            var callbackArgs = {"abc":123};
+            var callbackArgs = {abc: 123};
 
             straw.nativeCallback(callbackId, true, callbackArgs, false);
 
@@ -97,7 +103,7 @@ describe('straw', function () {
 
             var callbackId = straw.storeCallback.getCall(0).args[0].id;
 
-            var callbackArgs = {"abc":123};
+            var callbackArgs = {abc: 123};
 
             straw.nativeCallback(callbackId, false, callbackArgs, false);
 
@@ -166,7 +172,7 @@ describe('straw', function () {
         });
 
         it('does nothing when callback is null', function () {
-            var length = Object.keys(straw.table).length
+            var length = Object.keys(straw.table).length;
 
             straw.storeCallback(null);
 
@@ -174,7 +180,7 @@ describe('straw', function () {
         });
 
         it('does nothing when callback.id is null', function () {
-            var length = Object.keys(straw.table).length
+            var length = Object.keys(straw.table).length;
 
             straw.storeCallback({id: null});
 
@@ -184,6 +190,7 @@ describe('straw', function () {
 });
 
 describe('NATIVE_TO_JS_INTERFACE', function () {
+    'use strict';
 
     describe('exec', function () {
 

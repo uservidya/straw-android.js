@@ -1,7 +1,9 @@
-jasmine.getEnv().addReporter({
-    reportRunnerResults: function (runner) {
+window.jasmine.getEnv().addReporter({
+    reportRunnerResults: function () {
+        'use strict';
+
         if (window._$jscoverage != null) {
-            phantom.sendMessage('writeln', '\ncoverage:' + JSON.stringify(window._$jscoverage));
+            window.phantom.sendMessage('writeln', '\ncoverage:' + JSON.stringify(window._$jscoverage));
         }
     }
 });
