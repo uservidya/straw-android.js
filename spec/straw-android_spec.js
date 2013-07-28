@@ -53,6 +53,14 @@ describe('straw', function () {
             nativeApi.exec.restore();
             straw.storeCallback.restore();
         });
+
+        it('doesn\'t store callback when both success and fail callbacks are not specified', function () {
+            var length = straw.table.length;
+
+            straw.exec('fooPlugin', 'barAction', {value: 1});
+
+            expect(straw.table.length).toBe(length);
+        });
     });
 
     describe('nativeCallback', function () {
@@ -145,6 +153,32 @@ describe('straw', function () {
 
         it('does nothing if callbackId is irrelevant', function () {
             straw.nativeCallback('irrelevant-id', true, {}, true);
+        });
+    });
+
+    describe('storeCallback', function () {
+
+        it('stores callaback', function () {
+            var callback = {id: 'a-1'};
+            straw.storeCallback(callback);
+
+            expect(straw.retrieveCallback('a-1')).toBe(callback);
+        });
+
+        it('does nothing when callback is null', function () {
+            var length = Object.keys(straw.table).length
+
+            straw.storeCallback(null);
+
+            expect(Object.keys(straw.table).length).toBe(length);
+        });
+
+        it('does nothing when callback.id is null', function () {
+            var length = Object.keys(straw.table).length
+
+            straw.storeCallback({id: null});
+
+            expect(Object.keys(straw.table).length).toBe(length);
         });
     });
 });
