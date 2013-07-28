@@ -182,3 +182,27 @@ describe('straw', function () {
         });
     });
 });
+
+describe('NATIVE_TO_JS_INTERFACE', function () {
+
+    describe('exec', function () {
+
+        it('calls straw.nativeCallback with same arguments', function () {
+            sinon.spy(straw, 'nativeCallback');
+
+            var args = {};
+
+            window.NATIVE_TO_JS_INTERFACE.exec('abc', true, args, false);
+
+            expect(straw.nativeCallback.calledOnce).toBe(true);
+            expect(straw.nativeCallback.getCall(0).args[0]).toBe('abc');
+            expect(straw.nativeCallback.getCall(0).args[1]).toBe(true);
+            expect(straw.nativeCallback.getCall(0).args[2]).toBe(args);
+            expect(straw.nativeCallback.getCall(0).args[3]).toBe(false);
+
+            straw.nativeCallback.restore();
+        });
+
+    });
+
+});
