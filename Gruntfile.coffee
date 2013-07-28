@@ -22,12 +22,13 @@ module.exports = (grunt) ->
         src: ['src/straw-android.js', 'src/straw-android-plugin']
         options:
           specs: 'spec/*.js'
+          helpers: 'spec/helper/*.js'
 
       coverage:
         src: ['src-cov/straw-android.js', 'src-cov/straw-android-plugin']
         options:
           specs: 'spec/*.js'
-          helpers: 'spec/helper/coverage-reporter.js'
+          helpers: 'spec/helper/*.js'
 
 
   grunt.loadNpmTasks 'grunt-contrib-jshint'
