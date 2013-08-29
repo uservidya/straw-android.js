@@ -1,0 +1,16 @@
+{
+  "name": "straw-android.js",
+  "version": "0.0.1",
+  "authors": [
+    "Yosiya Hinosawa <stibium121@gmail.com>"
+  ],
+  "main": "src/straw-android.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
