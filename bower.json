@@ -8,9 +8,12 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "README.md",
+    "Makefile",
+    "package.json",
+    "convert-to-coveralls.js",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "spec"
   ]
 }
