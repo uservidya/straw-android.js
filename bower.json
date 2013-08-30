@@ -8,6 +8,7 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "Gruntfile.coffee",
     "README.md",
     "Makefile",
     "package.json",
