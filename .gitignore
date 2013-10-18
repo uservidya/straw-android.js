@@ -3,3 +3,6 @@ node_modules
 
 # instrumented sources
 src-cov
+
+# Mac file
+.DS_Store
