@@ -6,11 +6,13 @@ var straw = (function (window) {
     var NATIVE_TO_JS_INTERFACE_NAME = 'NATIVE_TO_JS_INTERFACE';
     var JS_TO_NATIVE_INTERFACE_NAME = 'JS_TO_NATIVE_INTERFACE';
 
+
     var NATIVE_TO_JS_INTERFACE = window[NATIVE_TO_JS_INTERFACE_NAME] = {};
 
     NATIVE_TO_JS_INTERFACE.exec = function (callbackId, success, args, keepAlive) {
         straw.nativeCallback(callbackId, success, args, keepAlive);
     };
+
 
     /**
      * CallbackPair class - success and fail callbacks
@@ -38,6 +40,7 @@ var straw = (function (window) {
             this.fail.call(null, args);
         }
     };
+
 
     /**
      * Straw callback interface manager
@@ -83,6 +86,10 @@ var straw = (function (window) {
     };
 
     var exports = new Straw();
+
+    // expose native2js / js2native interfaces for hackers
+    exports.NATIVE_TO_JS_INTERFACE = NATIVE_TO_JS_INTERFACE;
+    exports.JS_TO_NATIVE_INTERFACE = JS_TO_NATIVE_INTERFACE;
 
     return exports;
 
