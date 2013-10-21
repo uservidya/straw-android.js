@@ -23,12 +23,14 @@ module.exports = (grunt) ->
         options:
           specs: 'spec/*.js'
           helpers: 'spec/helper/*.js'
+          vendor: ['bower_components/sinon/lib/sinon.js']
 
       coverage:
-        src: ['src-cov/straw-android.js', 'src-cov/straw-android-plugin.js']
+        src: ['src-cov/straw-android.js']
         options:
           specs: 'spec/*.js'
           helpers: 'spec/helper/*.js'
+          vendor: ['bower_components/sinon/lib/sinon.js']
 
 
   grunt.loadNpmTasks 'grunt-contrib-jshint'

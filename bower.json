@@ -16,5 +16,8 @@
     "node_modules",
     "bower_components",
     "spec"
-  ]
+  ],
+  "devDependencies": {
+    "sinon": "1.7.3"
+  }
 }

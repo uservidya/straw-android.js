@@ -6,3 +6,9 @@ src-cov
 
 # Mac file
 .DS_Store
+
+# grunt cache dir
+.grunt
+
+# bower components
+bower_components
