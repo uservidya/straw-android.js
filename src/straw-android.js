@@ -89,7 +89,7 @@ var straw = (function (window) {
 
     // expose native2js / js2native interfaces for hackers
     exports.NATIVE_TO_JS_INTERFACE = NATIVE_TO_JS_INTERFACE;
-    exports.JS_TO_NATIVE_INTERFACE = JS_TO_NATIVE_INTERFACE;
+    exports.JS_TO_NATIVE_INTERFACE = window.JS_TO_NATIVE_INTERFACE;
 
     return exports;
 
