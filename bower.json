@@ -18,6 +18,6 @@
     "spec"
   ],
   "devDependencies": {
-    "sinon": "1.7.3"
+    "sinon-1.7.3.js": "http://sinonjs.org/releases/sinon-1.7.3.js"
   }
 }
