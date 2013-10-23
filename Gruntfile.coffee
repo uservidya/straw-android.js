@@ -28,7 +28,7 @@ module.exports = (grunt) ->
         src: ['src-cov/straw-android.js']
         options:
           specs: 'spec/*.js'
-          helpers: 'bower_components/jasmine-jscoverage-reporter/index.js'
+          helpers: 'node_modules/jasmine-jscoverage-reporter/reporter.js'
           vendor: ['bower_components/sinon-1.7.3.js/index.js']
 
 
