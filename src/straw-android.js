@@ -77,11 +77,25 @@ var straw = (function (window) {
         return callback;
     };
 
-    strawPt.nativeCallback = function (callbackId, success, args, keepAlive) {
+    strawPt.nativeCallback = function (callbackId, isSuccess, args, keepAlive) {
+
+        // retrieve callback object from callback storage
         var callback = this.retrieveCallback(callbackId, keepAlive);
 
+        // skip if callback is not registered
         if (callback != null) {
-            callback.call(success, args);
+
+            // parse returned JSON string
+            try {
+                args = JSON.parse(args);
+
+            } catch (e) {
+                // something wrong
+                console.log(e);
+                console.log('returned JSON from straw-android is broken!');
+            }
+
+            callback.call(isSuccess, args);
         }
     };
 
