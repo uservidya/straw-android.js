@@ -1,6 +1,6 @@
 {
   "name": "straw-android.js",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "js API wrapper for straw-android",
   "main": "index.js",
   "scripts": {
