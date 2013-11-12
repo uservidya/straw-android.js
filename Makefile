@@ -1,6 +1,6 @@
 .PHONY: default test coveralls
 
-GRUNT = ./node_modules/.bin/grunt
+GRUNT = grunt
 
 test:
 	$(GRUNT)
