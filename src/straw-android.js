@@ -91,8 +91,8 @@ var straw = (function (window) {
 
             } catch (e) {
                 // something wrong
-                console.log(e);
-                console.log('returned JSON from straw-android is broken!');
+                window.console.log(e);
+                window.console.log('returned JSON from straw-android is broken!');
             }
 
             callback.call(isSuccess, args);
